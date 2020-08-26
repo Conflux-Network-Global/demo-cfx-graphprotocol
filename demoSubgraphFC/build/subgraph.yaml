@@ -1,13 +1,13 @@
 specVersion: 0.0.2
 description: FC demo for Conflux Network
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: FCdemo
     network: mainnet
     source:
-      address: '0x87010faf5964d67ed070bc4b8dcafa1e1adc0997'
+      address: "0x87010faf5964d67ed070bc4b8dcafa1e1adc0997"
       abi: FC
       startBlock: 3895708
     mapping:
@@ -18,8 +18,8 @@ dataSources:
         - Transfer
       abis:
         - name: FC
-          file: ./abis/FC.json
+          file: FCdemo/abis/FC.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
-      file: ./src/mapping.ts
+      file: FCdemo/FCdemo.wasm

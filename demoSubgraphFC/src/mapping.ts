@@ -1,22 +1,10 @@
-import { NewGravatar, UpdatedGravatar } from '../generated/Gravity/Gravity'
-import { Gravatar } from '../generated/schema'
+import { Transfer } from "../generated/FCdemo/FC";
+import { TransferData } from "../generated/schema";
 
-export function handleNewGravatar(event: NewGravatar): void {
-  let gravatar = new Gravatar(event.params.id.toHex())
-  gravatar.owner = event.params.owner
-  gravatar.displayName = event.params.displayName
-  gravatar.imageUrl = event.params.imageUrl
-  gravatar.save()
-}
-
-export function handleUpdatedGravatar(event: UpdatedGravatar): void {
-  let id = event.params.id.toHex()
-  let gravatar = Gravatar.load(id)
-  if (gravatar == null) {
-    gravatar = new Gravatar(id)
-  }
-  gravatar.owner = event.params.owner
-  gravatar.displayName = event.params.displayName
-  gravatar.imageUrl = event.params.imageUrl
-  gravatar.save()
+export function handleTransfer(event: Transfer): void {
+  let transferEvent = new TransferData(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
+  transferEvent.from = event.params.from;
+  transferEvent.to = event.params.to;
+  transferEvent.value = event.params.value;
+  transferEvent.save();
 }
