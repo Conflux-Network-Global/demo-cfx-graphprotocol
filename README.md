@@ -4,7 +4,9 @@ Demonstration of connecting Conflux Network and The Graph protocol for decentral
 ## Introduction
 In order to connect the current version of the Graph node (September 2020) to Conflux Network, the there needs to be translation from [Ethereum JSON-RPC](https://eth.wiki/json-rpc/API) calls and [Conflux JSON-RPC](https://developer.conflux-chain.org/docs/conflux-doc/docs/json_rpc/) calls. The relay provides the conversion from ETH calls to CFX calls by matching the similar calls and also providing custom handling for specific calls. Additionally, the Graph node does not require signed transactions which make calling information significantly easier.
 
-**Note**: this demonstration and relay are purely experimental as The Graph is currently only setup for Ethereum.
+**Note**:
+- this demonstration and relay are purely experimental as The Graph is currently only setup for Ethereum.
+- the (customized) graph node may throw an error if the epoch number for the subgraph is too early
 
 ### Components
 Graph Protocol Node: https://github.com/Conflux-Network-Global/graph-node
